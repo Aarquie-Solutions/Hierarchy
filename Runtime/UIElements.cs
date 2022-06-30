@@ -8,7 +8,7 @@ using UnityEditor.UIElements;
 
 #endif
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy
 {
 #if UNITY_EDITOR
     public class Foldout : VisualElement

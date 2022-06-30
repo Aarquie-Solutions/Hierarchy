@@ -8,7 +8,7 @@ using UnityEditor.UIElements;
 using UnityEngine.Serialization;
 using System.IO;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     [Serializable]
     internal class HierarchySettings : ScriptableObject
@@ -795,7 +795,7 @@ namespace Hierarchy2
 
         internal static HierarchySettings CreateAssets()
         {
-            string path = EditorUtility.SaveFilePanelInProject("Save as...", "Hierarchy 2 Settings", "asset", "");
+            string path = EditorUtility.SaveFilePanelInProject("Save as...", "Hierarchy Settings", "asset", "");
             if (path.Length > 0)
             {
                 HierarchySettings settings = ScriptableObject.CreateInstance<HierarchySettings>();
@@ -812,7 +812,7 @@ namespace Hierarchy2
 
         internal bool ImportFromJson()
         {
-            string path = EditorUtility.OpenFilePanel("Import Hierarchy 2 settings", "", "json");
+            string path = EditorUtility.OpenFilePanel("Import Hierarchy settings", "", "json");
             if (path.Length > 0)
             {
                 string json = string.Empty;
@@ -833,7 +833,7 @@ namespace Hierarchy2
 
         internal TextAsset ExportToJson()
         {
-            string path = EditorUtility.SaveFilePanelInProject("Export Hierarchy 2 settings as...", "Hierarchy 2 Settings", "json", "");
+            string path = EditorUtility.SaveFilePanelInProject("Export Hierarchy settings as...", "Hierarchy Settings", "json", "");
             if (path.Length > 0)
             {
                 string json = JsonUtility.ToJson(instance, true);
@@ -855,7 +855,7 @@ namespace Hierarchy2
     }
 
     [CustomEditor(typeof(HierarchySettings))]
-    internal class SettingsInspector : Editor
+    internal class SettingsInspector : UnityEditor.Editor
     {
         HierarchySettings settings;
 

@@ -2,9 +2,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
-using Foldout = Hierarchy2.Foldout;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     public class InstantInspector : EditorWindow
     {
@@ -15,7 +14,7 @@ namespace Hierarchy2
         }
 
         ScrollView scrollView;
-        List<Editor> editors = new List<Editor>();
+        List<UnityEditor.Editor> editors = new List<UnityEditor.Editor>();
         Color objectNameColor = new Color32(58, 121, 187, 255);
         List<Object> components = new List<Object>();
         List<Foldout> folouts = new List<Foldout>();
@@ -129,12 +128,12 @@ namespace Hierarchy2
 
                 bool isMat = component is Material;
 
-                Editor editor = null;
+                UnityEditor.Editor editor = null;
 
                 if (isMat)
                     editor = MaterialEditor.CreateEditor(component) as MaterialEditor;
                 else
-                    editor = Editor.CreateEditor(component);
+                    editor = UnityEditor.Editor.CreateEditor(component);
 
                 VisualElement inspector = editor.CreateInspectorGUI();
 

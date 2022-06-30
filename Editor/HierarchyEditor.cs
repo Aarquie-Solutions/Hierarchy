@@ -5,16 +5,13 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditor.Experimental.SceneManagement;
 using UnityEditorInternal;
 using UnityEditor.Callbacks;
-using UnityEditor.UIElements;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     [InitializeOnLoad]
     public sealed class HierarchyEditor
@@ -106,7 +103,7 @@ namespace Hierarchy2
 
         static void InternalReflection()
         {
-            var arrayInteralEditorType = typeof(Editor).Assembly.GetTypes();
+            var arrayInteralEditorType = typeof(UnityEditor.Editor).Assembly.GetTypes();
             InternalEditorType = arrayInteralEditorType.ToList();
             dicInternalEditorType = arrayInteralEditorType.ToDictionary(type => type.FullName);
 
@@ -310,7 +307,7 @@ namespace Hierarchy2
                     if (!HierarchyWindow.instances.ContainsKey(window.GetInstanceID()))
                     {
                         var hierarchyWindow = new HierarchyWindow(window);
-                        hierarchyWindow.SetWindowTitle("Hierarchy 2");
+                        hierarchyWindow.SetWindowTitle("Hierarchy");
                     }
                 }
 
@@ -1773,7 +1770,7 @@ namespace Hierarchy2
         {
             const int priority = 200;
 
-            [MenuItem("Tools/Hierarchy 2/Lock Selection %l", false, priority)]
+            [MenuItem("Tools/Hierarchy/Lock Selection %l", false, priority)]
             static void SetNotEditableObject()
             {
                 Undo.RegisterCompleteObjectUndo(Selection.gameObjects, "Set Selections Flag NotEditable");
@@ -1795,10 +1792,10 @@ namespace Hierarchy2
                 InternalEditorUtility.RepaintAllViews();
             }
 
-            [MenuItem("Tools/Hierarchy 2/Lock Selection %l", true, priority)]
+            [MenuItem("Tools/Hierarchy/Lock Selection %l", true, priority)]
             static bool ValidateSetNotEditableObject() => Selection.gameObjects.Length > 0;
 
-            [MenuItem("Tools/Hierarchy 2/Unlock Selection %&l", false, priority)]
+            [MenuItem("Tools/Hierarchy/Unlock Selection %&l", false, priority)]
             static void SetEditableObject()
             {
                 Undo.RegisterCompleteObjectUndo(Selection.gameObjects, "Set Selections Flag Editable");
@@ -1820,11 +1817,11 @@ namespace Hierarchy2
                 InternalEditorUtility.RepaintAllViews();
             }
 
-            [MenuItem("Tools/Hierarchy 2/Unlock Selection %&l", true, priority)]
+            [MenuItem("Tools/Hierarchy/Unlock Selection %&l", true, priority)]
             static bool ValidateSetEditableObject() => Selection.gameObjects.Length > 0;
 
 
-            [MenuItem("Tools/Hierarchy 2/Move Selection Up #w", false, priority)]
+            [MenuItem("Tools/Hierarchy/Move Selection Up #w", false, priority)]
             static void QuickSiblingUp()
             {
                 var gameObject = Selection.activeGameObject;
@@ -1840,10 +1837,10 @@ namespace Hierarchy2
                 }
             }
 
-            [MenuItem("Tools/Hierarchy 2/Move Selection Up #w", true)]
+            [MenuItem("Tools/Hierarchy/Move Selection Up #w", true)]
             static bool ValidateQuickSiblingUp() => Selection.activeTransform != null;
 
-            [MenuItem("Tools/Hierarchy 2/Move Selection Down #s", false, priority)]
+            [MenuItem("Tools/Hierarchy/Move Selection Down #s", false, priority)]
             static void QuickSiblingDown()
             {
                 var gameObject = Selection.activeGameObject;
@@ -1856,10 +1853,10 @@ namespace Hierarchy2
                 gameObject.transform.SetSiblingIndex(++index);
             }
 
-            [MenuItem("Tools/Hierarchy 2/Move Selection Down #s", true, priority)]
+            [MenuItem("Tools/Hierarchy/Move Selection Down #s", true, priority)]
             static bool ValidateQuickSiblingDown() => Selection.activeTransform != null;
 
-            [MenuItem("Tools/Hierarchy 2/Separator", priority = 0)]
+            [MenuItem("Tools/Hierarchy/Separator", priority = 0)]
             static void CreateHeaderInstance(UnityEditor.MenuCommand command)
             {
                 GameObject gameObject = new GameObject(string.Format("{0}Separator", HierarchyEditor.instance.settings.separatorStartWith));

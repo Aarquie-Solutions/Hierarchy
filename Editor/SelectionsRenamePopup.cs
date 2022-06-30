@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     public sealed class SelectionsRenamePopup : EditorWindow
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     internal class HierarchyResources : ScriptableObject
     {
@@ -59,7 +59,7 @@ namespace Hierarchy2
     }
 
     [CustomEditor(typeof(HierarchyResources))]
-    internal class ResourcesInspector : Editor
+    internal class ResourcesInspector : UnityEditor.Editor
     {
         HierarchyResources resources;
 

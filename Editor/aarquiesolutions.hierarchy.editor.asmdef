@@ -1,8 +1,8 @@
 {
-    "name": "Hierarchy2.Editor",
-    "rootNamespace": "",
+    "name": "aarquiesolutions.hierarchy.editor",
+    "rootNamespace": "AarquieSolutions.Hierarchy.Editor",
     "references": [
-        "Hierarchy2.Runtime"
+        "aarquiesolutions.hierarchy"
     ],
     "includePlatforms": [
         "Editor"

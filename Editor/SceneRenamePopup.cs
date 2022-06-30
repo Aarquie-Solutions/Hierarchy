@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEditor;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     public class SceneRenamePopup : EditorWindow
     {

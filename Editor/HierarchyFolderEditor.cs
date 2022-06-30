@@ -6,10 +6,10 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 
-namespace Hierarchy2
+namespace AarquieSolutions.Hierarchy.Editor
 {
     [CustomEditor(typeof(HierarchyFolder))]
-    internal class HierarchyFolderEditor : Editor
+    internal class HierarchyFolderEditor : UnityEditor.Editor
     {
         private void OnEnable()
         {
@@ -35,7 +35,7 @@ namespace Hierarchy2
             return root;
         }
 
-        [MenuItem("Tools/Hierarchy 2/Hierarchy Folder", priority = 0)]
+        [MenuItem("Tools/Hierarchy/Hierarchy Folder", priority = 0)]
         static void CreateInstance(UnityEditor.MenuCommand command)
         {
             GameObject gameObject = new GameObject("Folder", new Type[1] {typeof(HierarchyFolder)});
